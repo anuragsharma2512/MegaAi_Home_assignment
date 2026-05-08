@@ -1,4 +1,4 @@
-# Real-Time Multi-Agent LLM Orchestration and Evaluation System
+﻿# Real-Time Multi-Agent LLM Orchestration and Evaluation System
 
 This is a containerized FastAPI system that demonstrates dynamic multi-agent routing, auditable tool orchestration, context-budget enforcement, adversarial evaluation, prompt rewrite proposals, SSE streaming, and database-backed execution traces.
 
@@ -16,6 +16,31 @@ Services:
 - API: `http://localhost:8000`
 - Log query UI: `http://localhost:8080`
 - PostgreSQL: `localhost:5432`
+
+## Postman Testing Screenshots
+
+The following screenshots show the tested Postman collection and successful API responses. Save the screenshots in `docs/screenshots/` with these filenames:
+
+- `postman-query.png`
+- `postman-trace.png`
+- `postman-latest-eval.png`
+- `postman-targeted-reeval.png`
+
+### Submit Query
+
+![Postman submit query SSE response](docs/screenshots/query_test.png)
+
+### Get Execution Trace
+
+![Postman get execution trace response](docs/screenshots/trace_test.png)
+
+### Latest Evaluation Summary
+
+![Postman latest eval response](docs/screenshots/latest_eval_test.png)
+
+### Targeted Re-Evaluation
+
+![Postman targeted re-eval response](docs/screenshots/target_re_eval_test.png)
 
 ## Exactly Five API Endpoints
 
@@ -119,7 +144,7 @@ The log query service at `http://localhost:8080` can filter by `job_id`, `agent_
 
 ## Known Limitations
 
-- The default “LLM” behavior is deterministic rule-based logic, not a hosted model. This makes the assessment runnable without credentials but limits natural language quality.
+- The default "LLM" behavior is deterministic rule-based logic, not a hosted model. This makes the assessment runnable without credentials but limits natural language quality.
 - The Python sandbox is process-isolated with restricted builtins, but it is not a hardened production sandbox.
 - The worker service is present and initialized, while query streaming is handled synchronously by the API to preserve live SSE semantics.
 - Database setup uses `create_all`; production deployments should use migrations.
@@ -134,3 +159,4 @@ The log query service at `http://localhost:8080` can filter by `job_id`, `agent_
 - Add auth, tenancy, rate limits, and PII-safe log redaction.
 
 See [docs/architecture.md](docs/architecture.md) for the architecture diagram and [AI_ATTESTATION.md](AI_ATTESTATION.md) for AI collaboration disclosure.
+
